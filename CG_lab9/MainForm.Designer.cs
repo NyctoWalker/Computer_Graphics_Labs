@@ -68,12 +68,14 @@ namespace CG_lab9
             this.buttonMove.Name = "buttonMove";
             this.buttonMove.Size = new System.Drawing.Size(129, 23);
             this.buttonMove.TabIndex = 1;
+            this.buttonMove.TabStop = false;
             this.buttonMove.Text = "Переместить";
             this.buttonMove.UseVisualStyleBackColor = true;
             this.buttonMove.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.InterceptArrowKeys = false;
             this.numericUpDown1.Location = new System.Drawing.Point(48, 42);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             100,
@@ -91,6 +93,7 @@ namespace CG_lab9
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.InterceptArrowKeys = false;
             this.numericUpDown2.Location = new System.Drawing.Point(48, 72);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             100,
@@ -100,6 +103,7 @@ namespace CG_lab9
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(94, 23);
             this.numericUpDown2.TabIndex = 3;
+            this.numericUpDown2.TabStop = false;
             // 
             // label2
             // 
@@ -137,6 +141,7 @@ namespace CG_lab9
             0,
             0,
             65536});
+            this.numericUpDown3.InterceptArrowKeys = false;
             this.numericUpDown3.Location = new System.Drawing.Point(48, 133);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10,
@@ -165,6 +170,7 @@ namespace CG_lab9
             0,
             0,
             65536});
+            this.numericUpDown4.InterceptArrowKeys = false;
             this.numericUpDown4.Location = new System.Drawing.Point(48, 163);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             10,
@@ -220,6 +226,7 @@ namespace CG_lab9
             0,
             0,
             0});
+            this.numericUpDown5.InterceptArrowKeys = false;
             this.numericUpDown5.Location = new System.Drawing.Point(48, 227);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             360,
@@ -301,10 +308,13 @@ namespace CG_lab9
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.buttonMove);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
