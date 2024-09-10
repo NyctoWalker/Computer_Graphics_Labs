@@ -311,7 +311,7 @@ namespace CG_lab9
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "2D преобразования";
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);

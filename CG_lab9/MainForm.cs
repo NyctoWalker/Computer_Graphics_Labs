@@ -210,34 +210,14 @@ namespace CG_lab9
 
         private void buttonMove_Click(object sender, EventArgs e)
         {
-            /*T = new double[3, 3]
+            T = new double[3, 3]
             {
-                {1, 0, 0},
-                {0, 1, 0},
-                {(double)(numericUpDown1.Value / scale), (double)(numericUpDown2.Value / scale), 1}
-            };*/
-
-            MovePoints((double)(numericUpDown1.Value), (double)(numericUpDown2.Value));
+                {1, 0, (double)(numericUpDown1.Value)},
+                {0, 1, (double)(numericUpDown2.Value)},
+                {0, 0, 1}
+            };
 
             Refresh();
-        }
-
-        private void MovePoints(double x_add, double y_add)
-        {
-            List<List<PointNormalized>> _Figures = new();
-            for (int j = 0; j < Figures.Count(); j++)
-            {
-                var _pts = Figures[j];
-                _Figures.Add(_pts);
-
-                for (int i = 0; i < _pts.Count(); i++)
-                {
-                    _pts[i].x += x_add;
-                    _pts[i].y += y_add;
-                    _Figures[j][i] = _pts[i];
-                }
-            }
-            Figures = _Figures;
         }
 
         private void buttonScale_Click(object sender, EventArgs e)
@@ -291,13 +271,33 @@ namespace CG_lab9
         {
             // Mowe
             if (e.KeyCode == Keys.S)
-                MovePoints(0, -1);
+                T = new double[3, 3]
+                {
+                    {1, 0, 0},
+                    {0, 1, -1},
+                    {0, 0, 1}
+                };
             if (e.KeyCode == Keys.W)
-                MovePoints(0, 1);
+                T = new double[3, 3]
+                {
+                    {1, 0, 0},
+                    {0, 1, 1},
+                    {0, 0, 1}
+                };
             if (e.KeyCode == Keys.A)
-                MovePoints(-1, 0);
+                T = new double[3, 3]
+                {
+                    {1, 0, -1},
+                    {0, 1, 0},
+                    {0, 0, 1}
+                };
             if (e.KeyCode == Keys.D)
-                MovePoints(1, 0);
+                T = new double[3, 3]
+                {
+                    {1, 0, 1},
+                    {0, 1, 0},
+                    {0, 0, 1}
+                };
 
             // Rotate
             if (e.KeyCode == Keys.Left)

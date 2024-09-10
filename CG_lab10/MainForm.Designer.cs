@@ -1,15 +1,15 @@
 ﻿
-namespace CG_lab6
+namespace CG_lab10
 {
     partial class MainForm
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -24,8 +24,8 @@ namespace CG_lab6
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -37,9 +37,7 @@ namespace CG_lab6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "MainForm";
-            this.Text = "Графические инструменты языка";
-            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
+            this.Text = "3D преобразования";
             this.ResumeLayout(false);
 
         }
@@ -47,3 +45,4 @@ namespace CG_lab6
         #endregion
     }
 }
+

@@ -177,7 +177,7 @@ namespace CG_lab8
             this.Controls.Add(this.pictureBox);
             this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Работа с пикселями изображений";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
