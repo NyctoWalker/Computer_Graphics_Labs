@@ -12,7 +12,6 @@ namespace CG_lab9
 {
     public partial class MainForm : Form
     {
-        List<PointNormalized> Pts;
         List<List<PointNormalized>> Figures;
         double[,] T;
         const int scale = 10;
@@ -37,7 +36,7 @@ namespace CG_lab9
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            g = e.Graphics;
 
             int cx = ClientSize.Width / 2;
             int cy = ClientSize.Height / 2;
@@ -49,7 +48,7 @@ namespace CG_lab9
             List<List<PointNormalized>> _Figures = new();
             foreach (List<PointNormalized> P in Figures)
             {
-                Pts = MultiplyMatricies(P, T);
+                List<PointNormalized> Pts = MultiplyMatricies(P, T);
                 Pts = NormalizePoints(Pts);
                 _Figures.Add(Pts);
 
@@ -134,9 +133,9 @@ namespace CG_lab9
 
                 result.Add(new PointNormalized(0, 0));
 
-                result[i].x = T[0, 0] * x + T[0, 1] * y + T[0, 2] * N;
-                result[i].y = T[1, 0] * x + T[1, 1] * y + T[1, 2] * N;
-                result[i].N = T[2, 0] * x + T[2, 1] * y + T[2, 2] * N;
+                result[i].x = T[0, 0] * x + T[1, 0] * y + T[2, 0] * N;
+                result[i].y = T[0, 1] * x + T[1, 1] * y + T[2, 1] * N;
+                result[i].N = T[0, 2] * x + T[1, 2] * y + T[2, 2] * N;
             }
 
             return result;
@@ -146,9 +145,12 @@ namespace CG_lab9
         {
             for (int i = 0; i < Pts.Count(); i++)
             {
-                Pts[i].x = Pts[i].x / Pts[i].N;
-                Pts[i].y = Pts[i].y / Pts[i].N;
-                Pts[i].N = 1;
+                if (Pts[i].N != 1d)
+                {
+                    Pts[i].x = Pts[i].x / Pts[i].N;
+                    Pts[i].y = Pts[i].y / Pts[i].N;
+                    Pts[i].N = 1;
+                }
             }
 
             return Pts;
@@ -212,9 +214,9 @@ namespace CG_lab9
         {
             T = new double[3, 3]
             {
-                {1, 0, (double)(numericUpDown1.Value)},
-                {0, 1, (double)(numericUpDown2.Value)},
-                {0, 0, 1}
+                {1, 0, 0},
+                {0, 1, 0},
+                {(double)(numericUpDown1.Value), (double)(numericUpDown2.Value), 1}
             };
 
             Refresh();
@@ -255,7 +257,7 @@ namespace CG_lab9
 
         private void buttonRotate_Click(object sender, EventArgs e)
         {
-            double angle = (double)numericUpDown5.Value * (Math.PI) / 180;
+            double angle = -(double)numericUpDown5.Value * (Math.PI) / 180;
 
             // Вокруг 0, 0
             T = new double[3, 3]
@@ -274,35 +276,35 @@ namespace CG_lab9
                 T = new double[3, 3]
                 {
                     {1, 0, 0},
-                    {0, 1, -1},
-                    {0, 0, 1}
+                    {0, 1, 0},
+                    {0, -1, 1}
                 };
             if (e.KeyCode == Keys.W)
                 T = new double[3, 3]
                 {
                     {1, 0, 0},
-                    {0, 1, 1},
-                    {0, 0, 1}
+                    {0, 1, 0},
+                    {0, 1, 1}
                 };
             if (e.KeyCode == Keys.A)
                 T = new double[3, 3]
                 {
-                    {1, 0, -1},
+                    {1, 0, 0},
                     {0, 1, 0},
-                    {0, 0, 1}
+                    {-1, 0, 1}
                 };
             if (e.KeyCode == Keys.D)
                 T = new double[3, 3]
                 {
-                    {1, 0, 1},
+                    {1, 0, 0},
                     {0, 1, 0},
-                    {0, 0, 1}
+                    {1, 0, 1}
                 };
 
             // Rotate
             if (e.KeyCode == Keys.Left)
             {
-                double angle = -45 * (Math.PI) / 180;
+                double angle = 45 * (Math.PI) / 180;
 
                 T = new double[3, 3]
                 {
@@ -313,7 +315,7 @@ namespace CG_lab9
             }
             if (e.KeyCode == Keys.Right)
             {
-                double angle = 45 * (Math.PI) / 180;
+                double angle = -45 * (Math.PI) / 180;
 
                 T = new double[3, 3]
                 {
